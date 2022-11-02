@@ -5,18 +5,28 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" href="/static/logo.png" />
-    <title>Кто прочитал тот лох</title>
+    <title>profile - soufiw</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://kit.fontawesome.com/268626e8d7.js" crossorigin="anonymous"></script>
     <style>
         body {
             background: #1b1a26;
             font-family: 'Consolas', sans-serif;
         }
 
-        .login-box {
+        .rainbow-text {
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 14px;
+            text-shadow: #626262 1px 1px 1px;
+        }
+
+        .rainbow-text .block-line>span {
+            display: inline-block;
+        }
+
+        .profile-box {
             margin-top: 75px;
             height: auto;
             background: #1b1a26;
@@ -33,7 +43,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .login-title {
+        .profile-title {
             margin-top: 15px;
             text-align: center;
             font-size: 30px;
@@ -43,39 +53,14 @@
             color: #ECF0F5;
         }
 
-        .login-form {
+        .profile-form {
             margin-top: 25px;
             text-align: left;
         }
 
-        input[type=text] {
-            background-color: #1b1a26;
-            border: none;
-            border-bottom: 2px solid #007bff;
-            border-top: 0px;
-            border-radius: 0px;
-            font-weight: bold;
-            outline: 0;
-            margin-bottom: 20px;
-            padding-left: 0px;
-            color: #ECF0F5;
-        }
-
-        input[type=password] {
-            background-color: #1b1a26;
-            border: none;
-            border-bottom: 2px solid #007bff;
-            border-top: 0px;
-            border-radius: 0px;
-            font-weight: bold;
-            outline: 0;
-            padding-left: 0px;
-            margin-bottom: 20px;
-            color: #ECF0F5;
-        }
-
         .form-group {
-            margin-top: 40px;
+            margin-top: -18px;
+            text-align: center;
             outline: 0px;
         }
 
@@ -96,33 +81,30 @@
 
         label {
             margin-bottom: 0px;
+            font-size: 25px;
         }
 
         .form-control-label {
             font-size: 10px;
-            color: #6C6C6C;
+            color: #d7d7d7;
             font-weight: bold;
             letter-spacing: 1px;
         }
 
-        .login-btm {
+        .profile-btm {
             float: left;
         }
 
-        .login-button {
+        .profile-button {
             padding-right: 0px;
             text-align: right;
             margin-bottom: 25px;
         }
 
-        .login-text {
+        .profile-text {
             text-align: left;
             padding-left: 0px;
             color: #A2A4A4;
-        }
-
-        .loginbttm {
-            padding: 0px;
         }
     </style>
     <script>
@@ -139,25 +121,26 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-2"></div>
-            <div class="col-lg-6 col-md-8 login-box">
+            <div class="col-lg-6 col-md-8 profile-box">
                 <div class="col-lg-12 logo"> <a href="/"> <img height="100px" src="static/logo.png"> </a> </div>
-                <div class="col-lg-12 login-title"> SIGN-IN </div>
-                <div class="col-lg-12 login-form">
-                    <div class="col-lg-12 login-form">
-                        <form action="/index.php" method="post">
-                            <div class="form-group"> <label class="form-control-label">Username</label> <input type="text" name="username" class="form-control"> </div>
-                            <div class="form-group"> <label class="form-control-label">Password</label> <input type="password" name="password" class="form-control" i> </div>
-                            <div class="col-lg-12 loginbttm">
-                                <div class="col-lg-6 login-btm login-text"> </div>
-                                <div class="col-lg-6 login-btm login-button"> <button type="submit" onclick="location.href = 'register/index.html';return false;" class="btn btn-outline-secondary">Sign-up</button> <button type="submit" class="btn btn-outline-primary">Sign-in</button> </div>
-                            </div>
-                            <div class="form-group" style="margin-top: 20px; text-align: center"> <label class="form-control-label" style="font-size: 11px;color: #606060">Soufiw Ⓒ (2020-2022)</label> </div>
-                        </form>
+                <div class="col-lg-12 profile-title"> Profile </div>
+                <div class="col-lg-12 profile-form">
+                    <div class="col-lg-12 profile-form">
+                        <div class="form-group"> <label class="form-control-label" style="font-size: 14px">Username: <a style="color: #0fe619">Monolith</a></label> </div>
+                        <div class="form-group"> <label class="form-control-label" style="font-size: 14px">User ID: <a style="color: #0fe619">666</a></label> </div>
+                        <div class="form-group"> <label class="form-control-label" style="font-size: 14px">Subscription till: <a style="color: #640707">No subscription</a> <a href="../extend"> Extend </a> </label> </div>
+                        <div class="form-group"> <i class="fa-solid fa-key" style="color: #7e77ce"></i> <label class="form-control-label" style="font-size: 14px; color: #C0C0C0; margin-top: 20px">Key not found!</label> </div>
+                        <div class="form-group" style="margin-top: 20px">
+                        <label class="form-control-label" style="font-size: 14px">News: <a href="" style="text-decoration: none;" class="fa-brands fa-telegram"></a> <a href="" style="text-decoration: none;" class="fa-brands fa-discord"></a> </label>                            </div>
+                        <div class="form-group"> <label class="form-control-label" style="font-size: 14px">Feedback: <a style="text-decoration: none;" href="mailto:admin@yougame.biz" class="fa-solid fa-envelope"></a> </label>                            </div>
+                        <div class="form-group" style="margin-top: 20px"> <label class="form-control-label" style="font-size: 11px;color: #606060">Soufiw Ⓒ (2020-2022)</label> </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-2"></div>
             </div>
         </div>
+    </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 </body>
 
 </html>
