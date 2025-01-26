@@ -8,8 +8,9 @@
         body {
             background-color: black;
             color: white;
-            font-family: Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -17,46 +18,95 @@
             position: relative;
             overflow: hidden;
         }
+
         .star {
             position: absolute;
             background-color: white;
             border-radius: 50%;
             opacity: 0.8;
         }
+
+        .discord-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .discord-button img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .discord-text {
+            display: none;
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .discord-button:hover .discord-text {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
 <body>
     <h1>maxizxyz</h1>
-<script>
-    function getRandomColor() {
-        const colors = [
-            'rgba(255, 255, 255, 0.8)', // white
-            'rgba(173, 216, 230, 0.8)', // light blue
-            'rgba(255, 182, 193, 0.8)', // light pink
-            'rgba(135, 206, 250, 0.8)'  // light sky blue
-        ];
-        const weights = [0.7, 0.1, 0.1, 0.1]; // weights for each color
-        let totalWeight = 0;
-        const random = Math.random();
-        for (let i = 0; i < colors.length; i++) {
-            totalWeight += weights[i];
-            if (random <= totalWeight) {
-                return colors[i];
+    <button class="discord-button" onclick="copyToClipboard('maxiz.xyz')">
+        <img src="https://img.icons8.com/ios7/512/FFFFFF/discord-logo.png" alt="Discord Icon">
+        <span class="discord-text">maxiz.xyz</span>
+    </button>
+    <script>
+        function getRandomColor() {
+            const colors = [
+                'rgba(255, 255, 255, 0.8)', // white
+                'rgba(173, 216, 230, 0.8)', // light blue
+                'rgba(255, 182, 193, 0.8)', // light pink
+                'rgba(135, 206, 250, 0.8)'  // light sky blue
+            ];
+            const weights = [0.7, 0.1, 0.1, 0.1]; // weights for each color
+            let totalWeight = 0;
+            const random = Math.random();
+            for (let i = 0; i < colors.length; i++) {
+                totalWeight += weights[i];
+                if (random <= totalWeight) {
+                    return colors[i];
+                }
             }
         }
-    }
 
-    for (let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        const size = Math.random() * 3 + 1;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        star.style.top = Math.random() * 100 + 'vh';
-        star.style.left = Math.random() * 100 + 'vw';
-        star.style.backgroundColor = getRandomColor();
-        document.body.appendChild(star);
-    }
-</script>
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.backgroundColor = getRandomColor();
+            document.body.appendChild(star);
+        }
+
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+    </script>
 </body>
 </html>
+
