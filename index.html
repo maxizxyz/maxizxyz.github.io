@@ -27,17 +27,36 @@
 </head>
 <body>
     <h1>maxizxyz</h1>
-    <script>
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random() * 3 + 1;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.top = `${Math.random() * 100}vh`;
-            star.style.left = `${Math.random() * 100}vw`;
-            document.body.appendChild(star);
+<script>
+    function getRandomColor() {
+        const colors = [
+            'rgba(255, 255, 255, 0.8)', // white
+            'rgba(173, 216, 230, 0.8)', // light blue
+            'rgba(255, 182, 193, 0.8)', // light pink
+            'rgba(135, 206, 250, 0.8)'  // light sky blue
+        ];
+        const weights = [0.7, 0.1, 0.1, 0.1]; // weights for each color
+        let totalWeight = 0;
+        const random = Math.random();
+        for (let i = 0; i < colors.length; i++) {
+            totalWeight += weights[i];
+            if (random <= totalWeight) {
+                return colors[i];
+            }
         }
-    </script>
+    }
+
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 3 + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.backgroundColor = getRandomColor();
+        document.body.appendChild(star);
+    }
+</script>
 </body>
 </html>
