@@ -24,6 +24,7 @@
             background-color: white;
             border-radius: 50%;
             opacity: 0.8;
+            transition: transform 0.3s;
         }
 
         .discord-button {
@@ -106,6 +107,25 @@
             document.execCommand('copy');
             document.body.removeChild(textarea);
         }
+
+        document.addEventListener('mousemove', (event) => {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                const rect = star.getBoundingClientRect();
+                const starX = rect.left + rect.width / 2;
+                const starY = rect.top + rect.height / 2;
+                const distanceX = starX - event.clientX;
+                const distanceY = starY - event.clientY;
+                const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+                const maxDistance = 100;
+                if (distance < maxDistance) {
+                    const scale = 1 + (maxDistance - distance) / maxDistance;
+                    star.style.transform = `translate(${distanceX * scale}px, ${distanceY * scale}px)`;
+                } else {
+                    star.style.transform = 'translate(0, 0)';
+                }
+            });
+        });
     </script>
 </body>
 </html>
