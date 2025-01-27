@@ -71,12 +71,12 @@
     <script>
         function getRandomColor() {
             const colors = [
-                'rgba(255, 255, 255, 0.8)', // white
-                'rgba(173, 216, 230, 0.8)', // light blue
-                'rgba(255, 182, 193, 0.8)', // light pink
-                'rgba(135, 206, 250, 0.8)'  // light sky blue
+                'rgba(255, 255, 255, 0.8)', // белы
+                'rgba(173, 216, 230, 0.8)', // голубенький
+                'rgba(255, 182, 193, 0.8)', // розовый
+                'rgba(135, 206, 250, 0.8)'  // еще голубоватый
             ];
-            const weights = [0.7, 0.1, 0.1, 0.1]; // weights for each color
+            const weights = [0.7, 0.1, 0.1, 0.1];
             let totalWeight = 0;
             const random = Math.random();
             for (let i = 0; i < colors.length; i++) {
@@ -87,7 +87,7 @@
             }
         }
 
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 400; i++) { // колво звезд
             const star = document.createElement('div');
             star.className = 'star';
             const size = Math.random() * 3 + 1;
