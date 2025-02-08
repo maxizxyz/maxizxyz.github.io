@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Heart</title>
+    <style>
+        body {
+            background-color: #ffcccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dot {
+            position: absolute;
+            width: 10px; /* Увеличили размер точки */
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .small-heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: transparent;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="red" /></svg>');
+            background-size: cover;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const heartSize = 150; // Увеличили размер сердца
+        const dotsCount = 600; // Больше точек для заполненности
+
+        function heartEquation(x, y) {
+            x /= heartSize;
+            y /= heartSize;
+            return Math.pow(x * x + y * y - 1, 3) - x * x * y * y * y <= 0;
+        }
+
+        function generateHeartPoints() {
+            const points = [];
+            while (points.length < dotsCount) {
+                const x = (Math.random() * 2 - 1) * 16 * heartSize;
+                const y = (Math.random() * 2 - 1) * 16 * heartSize;
+                if (heartEquation(x, y)) {
+                    points.push({ x, y });
+                }
+            }
+            return points;
+        }
+
+        const heartPoints = generateHeartPoints();
+
+        heartPoints.forEach(point => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.style.left = `calc(50% + ${point.x}px)`;
+            dot.style.top = `calc(50% - ${point.y}px)`;
+            document.body.appendChild(dot);
+
+            dot.addEventListener('mouseover', () => {
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = 100 + Math.random() * 200; // Увеличен радиус разброса точек
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                dot.style.transform = `translate(${x}px, ${y}px)`;
+                dot.style.opacity = 0;
+            });
+
+            dot.addEventListener('mouseout', () => {
+                dot.style.transform = 'translate(0, 0)';
+                dot.style.opacity = 1;
+            });
+        });
+
+        // Добавление маленьких сердечек на фон
+        const colors = ['#ff6666', '#ff9999', '#ffcccc', '#ffb3b3'];
+        for (let i = 0; i < 100; i++) {
+            const smallHeart = document.createElement('div');
+            smallHeart.className = 'small-heart';
+            smallHeart.style.left = `${Math.random() * 100}vw`;
+            smallHeart.style.top = `${Math.random() * 100}vh`;
+            document.body.appendChild(smallHeart);
+        }
+    </script>
+</body>
+</html>
