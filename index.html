@@ -31,7 +31,7 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
-        .discord-button {
+        .button {
             background: none;
             border: none;
             cursor: pointer;
@@ -39,10 +39,10 @@
             margin-top: 20px;
         }
 
-        .discord-button img {
-            width: 40px;
-            height: 40px;
-        }
+            .button img {
+                width: 40px;
+                height: 40px;
+            }
 
         .discord-text {
             display: none;
@@ -68,9 +68,12 @@
 </head>
 <body>
     <h1>maxizxyz</h1>
-    <button class="discord-button" onclick="copyToClipboard('maxiz.xyz')">
+    <button class="button discord-button" onclick="copyToClipboard('maxiz.xyz')">
         <img src="https://img.icons8.com/ios7/512/FFFFFF/discord-logo.png" alt="Discord Icon">
         <span class="discord-text">maxiz.xyz</span>
+    </button>
+    <button class="button heart-button" onclick="window.location.href='new.html'">
+        <img src="https://img.icons8.com/ios-filled/50/FFFFFF/like.png" alt="Heart Icon">
     </button>
     <script>
         function getRandomColor() {
@@ -133,4 +136,5 @@
     </script>
 </body>
 </html>
+
 
